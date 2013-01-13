@@ -18,17 +18,17 @@ public class Main {
         MyStack stack = new MyStack(20);
         List<Thread> threads = new ArrayList<Thread>();
 
-        for (int i = 0; i <= 1; i++) {
-            Runnable task = new Pusher(i,stack);
+        for (int i = 1; i <= 2; i++) {
+            Runnable task = new Pusher(i, stack);
             Thread worker = new Thread(task);
             worker.setName(String.valueOf(i));
             worker.start();
             threads.add(worker);
         }
 
-        Runnable task = new Popper(0, stack);
+        Runnable task = new Popper(1, stack);
         Thread worker = new Thread(task);
-        worker.setName(String.valueOf(0));
+        worker.setName(String.valueOf(1));
         worker.start();
         threads.add(worker);
     }
